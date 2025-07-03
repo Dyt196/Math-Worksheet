@@ -119,20 +119,27 @@ function goReset() {
 function submitAnswer() {
   if (currentName.value) {
     const answerMe = questionStore.evaluateAnswer()
-    sendScore(currentName.value, answerMe.score).then((resp) => {
-      if (resp.res == 0) {
-        Notify.create({
-          type: 'positive',
-          message: 'Score Saved',
-        })
-        extractLeaderBoard()
-      } else {
-        Notify.create({
-          type: 'negative',
-          message: resp.msg,
-        })
-      }
-    })
+    if (answerMe.response == 0) {
+      sendScore(currentName.value, answerMe.score).then((resp) => {
+        if (resp.res == 0) {
+          Notify.create({
+            type: 'positive',
+            message: 'Score Saved',
+          })
+          extractLeaderBoard()
+        } else {
+          Notify.create({
+            type: 'negative',
+            message: resp.msg,
+          })
+        }
+      })
+    } else {
+      Notify.create({
+        type: 'negative',
+        message: answerMe.message,
+      })
+    }
   } else {
     Notify.create({
       type: 'negative',
