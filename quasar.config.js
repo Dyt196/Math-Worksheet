@@ -44,7 +44,7 @@ export default defineConfig((ctx) => {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      // publicPath: '/',
+      publicPath: '/frontend/',
       // analyze: true,
       env: {
         BE_LINK: ctx.dev
