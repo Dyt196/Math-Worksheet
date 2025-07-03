@@ -47,7 +47,9 @@ export default defineConfig((ctx) => {
       // publicPath: '/',
       // analyze: true,
       env: {
-        BE_LINK: ctx.dev ? 'http://localhost:3030/' : 'http://localhost:3030/',
+        BE_LINK: ctx.dev
+          ? 'http://localhost:3030/'
+          : 'https://math-worksheet-backend.onrender.com/',
       },
       // rawDefine: {}
       // ignorePublicFolder: true,
